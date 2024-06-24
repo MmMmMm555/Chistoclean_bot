@@ -80,7 +80,6 @@ def address(update: Update, context: CallbackContext) -> None:
         else:
             update.message.delete()
             text = static_text.TEXT['address_error'][u.language]
-            update.message.delete()
             update.message.reply_text(text=text, reply_markup=keyboards.address_choice_button(u.language))
             return states.ADDRESS
 

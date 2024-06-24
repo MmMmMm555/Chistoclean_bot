@@ -109,6 +109,9 @@ def setup_dispatcher(dp):
                 Filters.regex("(^Asosiy sahifa 🏠$|^Главное меню 🏠$)"),
                 onboarding_handlers.redirect_to_main_menu),
 
+                MessageHandler(Filters.regex('^Ortga 🔙$|^Назад 🔙'),
+                send_request_handlers.location),
+
                 MessageHandler(Filters.location,
                 send_request_handlers.location),
             ],
