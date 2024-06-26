@@ -7,7 +7,7 @@ from tgbot.handlers.onboarding.static_text import main_menu
 from users.models import User
 from tgbot.handlers.send_request import keyboards
 from tgbot import states
-
+import os
 
 def send_request(update: Update, context: CallbackContext) -> None:
     u = User.get_user(update, context)
@@ -198,9 +198,13 @@ def comment(update: Update, context: CallbackContext) -> None:
     services = []
     for service in context.user_data.get('service', None):
         services.append(static_text.KEYBOARD[service][u.language])
-    data = data = f"Mijoz: {user_link}\nism: {context.user_data['name']}\ntel: +{context.user_data['phone']}\njoy turi: {context.user_data['address']}\nxizmatlar: {services}\nmaydon: {context.user_data['area']}\nsana: {context.user_data['date']}\nvaqt: {context.user_data['time']}\nlokatsiya: {context.user_data['location']}\ncomment: {comment}"
+    location = context.user_data['location']
+    map = f"https://www.google.com/maps/search/?api=1&query={location['latitude']},{location['longitude']}"
+    data = data = f"Mijoz: {user_link}\nism: {context.user_data['name']}\ntel: +{context.user_data['phone']}\njoy turi: {context.user_data['address']}\nxizmatlar: {services}\nmaydon: {context.user_data['area']}\nsana: {context.user_data['date']}\nvaqt: {context.user_data['time']}\nlokatsiya: {map}\ncomment: {comment}"
 
-    update.message.bot.send_message(chat_id=1295037439, text=data)
+    update.message.bot.send_message(chat_id=3985150, text=data)
+    update.message.bot.send_message(chat_id=6910458944, text=data)
+    update.message.bot.send_message(chat_id=1034677645, text=data)
 
     text = static_text.TEXT['successful'][u.language]
     update.message.reply_text(text=text, reply_markup=main_menu_keyboard(u.language))

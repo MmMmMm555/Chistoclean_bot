@@ -153,7 +153,8 @@ CELERY_TASK_DEFAULT_QUEUE = 'default'
 
 
 # -----> TELEGRAM
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_TOKEN = "7329077243:AAGnka0cXYN66NT9lXeZp61gSgjzqiyozzk"
+# os.getenv("TELEGRAM_TOKEN")
 if TELEGRAM_TOKEN is None:
     logging.error(
         "Please provide TELEGRAM_TOKEN in .env file.\n"

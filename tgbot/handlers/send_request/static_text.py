@@ -93,7 +93,7 @@ KEYBOARD = {
         'ru': "мойка фасадов",
     },
     "marmar": {
-        'uz': "Maramor yuvish",
+        'uz': "Mramor yuvish",
         'ru': "Мытье мрамора",
     },
     'no': {
